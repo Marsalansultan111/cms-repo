@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CMS</title>
+    <link rel="stylesheet" href="{% static 'style1.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <h1>Campus Management System</h1>
+    <br />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col" colspan="4">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for rec in record %}
+        <tr>
+          <td>{{rec.id}}</td>
+          <td>{{rec.firstname}}</td>
+          <td>{{rec.lastname}}</td>
+
+          <td>
+            <a href="update/{{rec.id}}"
+              ><button class="btn btn-primary">Update</button></a
+            >
+          </td>
+          <td>
+            <a href="delete/{{rec.id}}"
+              ><button class="btn btn-danger">Delete</button></a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    &nbsp &nbsp
+    <a href="{% url 'create' %}">
+      <button class="btn btn-success mt-5 m-4">Create</button></a
+    >
+  </body>
+</html>
